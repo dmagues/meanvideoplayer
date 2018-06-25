@@ -8,12 +8,20 @@ const videoSchema =  new Schema({
     description: String
 });
 
-VideoModel = module.exports = mongoose.model('video', videoSchema, 'videos');
+const Video = module.exports = mongoose.model('video', videoSchema, 'videos');
 
 module.exports.getAllVideos = function(callback){
-    VideoModel.find({}).exec(callback);
+    Video.find(callback);
 }
 
 module.exports.getVideoById = function(id, callback){
-    VideoModel.findById(id,callback);
+    Video.findById(id,callback);
+}
+
+module.exports.updateVideo = function(id, currentVideo, callback){
+    Video.findByIdAndUpdate(id,{$set: currentVideo},{new:true}, callback);
+}
+
+module.exports.deleteVideo = function(id, callback){
+    Video.findByIdAndRemove(id,callback);
 }
