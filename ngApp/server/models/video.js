@@ -8,7 +8,7 @@ const videoSchema =  new Schema({
     description: String
 });
 
-const Video = module.exports = mongoose.model('video', videoSchema, 'videos');
+const Video = module.exports = mongoose.model('Video', videoSchema, 'videos');
 
 module.exports.getAllVideos = function(callback){
     Video.find(callback);

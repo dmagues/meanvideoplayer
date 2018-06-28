@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const api = require('./server/routes/api');
 const config  =require('./server/config/database');
@@ -21,6 +22,9 @@ const port = 3000;
 
 const app = express();
 
+//public access CORS allow acccess from any domain
+app.use(cors());
+
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -32,6 +36,12 @@ app.get('*',(req, res)=>{
     res.sendFile(path.join(__dirname, 'dist/index.html'));    
 });
 
+app.use(function (err, req, res, next) {
+    console.error(err.stack)
+    res.status(500).send('Ups! something broke: '+err)
+ })
+ 
 app.listen(port,()=>{
     console.log("Server running on port: " + port);
 });
+

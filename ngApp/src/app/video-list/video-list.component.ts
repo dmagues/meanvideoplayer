@@ -1,0 +1,18 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { Video } from '../video';
+
+@Component({
+  selector: 'video-list',
+  templateUrl: './video-list.component.html',
+  styleUrls: ['./video-list.component.css'],
+  inputs: ['videos']
+})
+export class VideoListComponent implements OnInit {
+
+  @Input() videos: Video[];
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

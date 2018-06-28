@@ -11,7 +11,7 @@ router.get('/videos',(req, res)=>{
     console.log('Get all the videos');
     Video.getAllVideos((err, videos)=>{
         if(err){
-            console.log('Error in getAllVideos: '+err);
+            throw err;
         }else{
             res.json(videos);
         }
@@ -23,7 +23,7 @@ router.get('/video/:id',(req, res)=>{
     console.log('Get a single video');
     Video.getVideoById(req.params.id, (err, video)=>{
         if(err){
-            console.log('Error in getVideoById: '+err);
+            throw err;
         }else{
             res.json(video);
         }
@@ -38,7 +38,7 @@ router.post('/video',(req, res)=>{
     newVideo.description = req.body.description;
     newVideo.save((err, insertedVideo)=>{
         if(err){
-            console.log('Error in save: ' + err);
+            throw err;
         }else{
             res.json(insertedVideo);
         }
@@ -53,7 +53,7 @@ router.put('/video/:id', (req, res)=>{
     }
     Video.updateVideo(req.params.id, video, (err, updatedVideo)=>{
         if(err){
-            res.send('Error updating video: '+err);
+            throw err;
         }else{
             res.json(updatedVideo);
         }
