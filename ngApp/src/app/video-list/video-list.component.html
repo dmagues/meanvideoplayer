@@ -1,3 +1,4 @@
-<ul class="nav nav-pills nav-fill flex-column">
-  <li class="nav-item" *ngFor="let video of videos"><a class="nav-link" href="#">{{video.title}}</a></li>
+<ul class="nav nav-pills flex-column">
+  <li class="nav-item" (click)="onSelect(video)" *ngFor="let video of videos">
+    <a class="nav-link">{{video.title}}</a></li>
 </ul>
