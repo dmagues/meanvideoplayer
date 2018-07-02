@@ -20,6 +20,7 @@
     </div>
     <video-detail 
           (updateVideoEvent)="onUpdateVideo($event)"
+          (deleteVideoEvent)="onDeleteVideo($event)"
           *ngIf="selectedVideo && hideNewVideo" 
           [video]="selectedVideo"></video-detail>
   </div>
