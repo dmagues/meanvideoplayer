@@ -43,7 +43,7 @@ export class VideoCenterComponent implements OnInit {
   onDeleteVideo(video:any){
     this._videoService.deleteVideo(video)
         .subscribe(resDeleteVideo=>{
-            let i = this.videos.findIndex(v=>v._id = resDeleteVideo._id);
+            let i = this.videos.findIndex(v=> v._id === resDeleteVideo._id);
             this.videos.splice(i,1);
         });        
     
